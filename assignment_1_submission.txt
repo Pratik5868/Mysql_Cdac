@@ -1,0 +1,113 @@
+mysql> create table customerinfo(
+    -> email_address varchar(75) PRIMARY KEY,
+    -> first_name varchar(50);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+mysql> create table customerinfo(email_address varchar(75) primary key,first_name varchar(50), last_name varchar(50), address1 varchar(50), address2 varchar(50), customer_zip varchar(10), area code char(3), telephone_number char(7));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'code char(3), telephone_number char(7))' at line 1
+mysql> create table customerinfo(email_address varchar(75) primary key,first_name varchar(50), last_name varchar(50), address1 varchar(50), address2 varchar(50), customer_zip varchar(10), area_code char(3), telephone_number char(7));
+Query OK, 0 rows affected (1.16 sec)
+
+mysql> insert into customerinfo set values('bobbychandodkar@gmail.com','Bobby','Chandodkar','Sadashiv Peth','Pune','411001','001','85684658'); 
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'values('bobbychandodkar@gmail.com','Bobby','Chandodkar','Sadashiv Peth','Pune','' at line 1
+mysql> insert into customerinfo set values('bobbychandodkar@gmail.com','Bobby','Chandodkar','Sadashiv Peth','Pune','411001','001','8568465'); 
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'values('bobbychandodkar@gmail.com','Bobby','Chandodkar','Sadashiv Peth','Pune','' at line 1
+mysql> insert into customerinfo values('bobbychandodkar@gmail.com','Bobby','Chandodkar','Sadashiv Peth','Pune','411001','001','8568465'); 
+Query OK, 1 row affected (0.17 sec)
+
+mysql> insert into customerinfo values('nikamulhas123@gmail.com','Ulhas','Nikam','Mahanagarpalika','Pimpri Chinchwad','411004','002','7582938'); 
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into customerinfo values('ms245@gmail.com','Maitreyi','Sarnobat','Gangapur road','Nashik','420456','003','6585963'); 
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from customerinfo;
++---------------------------+------------+------------+-----------------+------------------+--------------+-----------+------------------+
+| email_address             | first_name | last_name  | address1        | address2         | customer_zip | area_code | telephone_number |
++---------------------------+------------+------------+-----------------+------------------+--------------+-----------+------------------+
+| bobbychandodkar@gmail.com | Bobby      | Chandodkar | Sadashiv Peth   | Pune             | 411001       | 001       | 8568465          |
+| ms245@gmail.com           | Maitreyi   | Sarnobat   | Gangapur road   | Nashik           | 420456       | 003       | 6585963          |
+| nikamulhas123@gmail.com   | Ulhas      | Nikam      | Mahanagarpalika | Pimpri Chinchwad | 411004       | 002       | 7582938          |
++---------------------------+------------+------------+-----------------+------------------+--------------+-----------+------------------+
+3 rows in set (0.00 sec)
+
+mysql> create table cardinfo(card_id int primary key, ccnum varchar(16), ccexp date,, name_on_card varchar(100),email_address varchar(75));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', name_on_card varchar(100),email_address varchar(75))' at line 1
+mysql> create table cardinfo(card_id int primary key, ccnum varchar(16), ccexp date, name_on_card varchar(100),email_address varchar(75));
+Query OK, 0 rows affected (0.17 sec)
+
+mysql> insert into cardinfo values(001,'456753951', '2023-08-03','Pratik Patil','prp456@gmail.com');
+Query OK, 1 row affected (0.15 sec)
+
+mysql> insert into cardinfo values(002,'786943913', '2023-03-05','Vijay Rathod','vijayrathod@gmail.com');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into cardinfo values(003,'123759654', '2023-01-11','Umesh Bichukale','UB789@gmail.com');
+Query OK, 1 row affected (0.38 sec)
+
+mysql> select * from cardinfo;
++---------+-----------+------------+-----------------+-----------------------+
+| card_id | ccnum     | ccexp      | name_on_card    | email_address         |
++---------+-----------+------------+-----------------+-----------------------+
+|       1 | 456753951 | 2023-08-03 | Pratik Patil    | prp456@gmail.com      |
+|       2 | 786943913 | 2023-03-05 | Vijay Rathod    | vijayrathod@gmail.com |
+|       3 | 123759654 | 2023-01-11 | Umesh Bichukale | UB789@gmail.com       |
++---------+-----------+------------+-----------------+-----------------------+
+3 rows in set (0.00 sec)
+
+mysql> create table cardtype(card_id integer primary key, card_type varchar(20));
+Query OK, 0 rows affected (0.19 sec)
+
+mysql> insert into cardtype values(card_id integer primary key, card_type varchar(20));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'integer primary key, card_type varchar(20))' at line 1
+mysql> insert into cardtype values(100,'Debit card');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into cardtype values(101,'Visa Card');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert into cardtype values(102,'Master Card');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> select * from cardinfo;
++---------+-----------+------------+-----------------+-----------------------+
+| card_id | ccnum     | ccexp      | name_on_card    | email_address         |
++---------+-----------+------------+-----------------+-----------------------+
+|       1 | 456753951 | 2023-08-03 | Pratik Patil    | prp456@gmail.com      |
+|       2 | 786943913 | 2023-03-05 | Vijay Rathod    | vijayrathod@gmail.com |
+|       3 | 123759654 | 2023-01-11 | Umesh Bichukale | UB789@gmail.com       |
++---------+-----------+------------+-----------------+-----------------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from cardtype;
++---------+-------------+
+| card_id | card_type   |
++---------+-------------+
+|     100 | Debit card  |
+|     101 | Visa Card   |
+|     102 | Master Card |
++---------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> create table localinfo(zip varchar (10) primary key, city varchar(50),state char(2));
+Query OK, 0 rows affected (0.48 sec)
+
+mysql> insert into localinfo values(411001,'Pune','Mh');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into localinfo values(425001,'Jalgaon','Mh');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert into localinfo values(425002,'Bhusawal','Mh');
+Query OK, 1 row affected (0.38 sec)
+
+mysql> select * from localinfo;
++--------+----------+-------+
+| zip    | city     | state |
++--------+----------+-------+
+| 411001 | Pune     | Mh    |
+| 425001 | Jalgaon  | Mh    |
+| 425002 | Bhusawal | Mh    |
++--------+----------+-------+
+3 rows in set (0.00 sec)
+
+mysql> Terminal close -- exit!
