@@ -1,0 +1,258 @@
+--different users
+1 normal user  : priti / uma
+2 super user / administrator / DBA		: root
+
+
+--to start 
+run : mysql ---mysql command line
+
+user name : root
+password : root
+
+--prompt
+mysql>
+
+--to exit
+exit;
+or
+quit;
+
+--to clear screen
+\! cls
+or
+system cls;
+system clear;
+
+
+--to see all databases
+show databases;
+
+--to drop database
+drop database cdac;
+or
+drop database cdac if exist;
+
+--to create a database
+create database cdac;
+or
+create database cdac if not exist;
+
+--to open a database
+use cdac;
+
+
+dept
+deptno		dname 		loc
+10		acct		mum
+20		fin		bang
+30		mkt		hyd
+40		oper		pune
+
+create table dept(
+deptno int,
+dname varchar(20),
+loc varchar(20));
+
+--to insert a record
+insert into dept values (10, 'acct', 'mum');
+insert into dept values (20, 'fin', 'bang');
+insert into dept values (30, "mkt", "hyd");
+insert into dept values (40, 'oper', 'pune');
+
+--to see all records
+select * from dept;		--all cols
+
+--to see the structure of table
+desc dept;
+
+--to see the names of all the tables
+show tables;
+
+--to see the name of the user
+select user();
+
+--change the dname as operation for deptno 40
+update dept
+set dname ='operation'
+where deptno=40;
+
+
+select * from dept;;
+
+--change the loc as chennai for deptno 40
+update dept
+SET LOC='chennai'
+where deptno=40;
+
+--note
+command , data is not case sensitive in mysql 
+
+--to delete the record for deptno 40
+delete from dept
+where deptno=40;
+
+--to delete the record for dname as ACCT
+delete from dept
+where DNAME='ACCT';
+
+commit;
+
+--truncate the table
+all the records will be delete but the structure is preserved 
+can not give where condition
+can not rollback operation
+
+truncate table dept;
+
+--diff in delete and truncate
+delete :  will delete the record rowwise
+truncate : will delete all rows
+
+delete : rollback is possible
+truncate : rollback is not possible
+
+delete : can give "where" condition
+truncate : can not give "where" condition
+
+delete : slow
+truncate : faster 
+
+delete : dml
+truncate : ddl
+
+delete : trigger can be used with "delete" operation
+truncate : trigger can not be used with "truncate" operation
+
+---to drop table
+to delete the structure and the records 
+drop table dept;
+
+--diff in drop and truncate
+truncate : to delete the records but the structure is preserved
+drop : to delete the structure and the records both together
+
+======================================
+--to comment for single line
+# sdfksldfklsdkf
+
+--to multiple line comment
+/*dfgdfg
+df
+gd
+fg
+dfg */
+
+DROP table emp;
+
+-- create the table and insert 4 records
+create table emp(
+empno decimal(4) primary key,
+ename varchar(20),
+sal decimal(10,2),
+deptno decimal(2),
+hiredate date);
+
+insert into emp values(1, 'vaibhav', 50000.50, 10, '2023-1-10');
+insert into emp values(2, 'vaishali', 50000.50, 10, '2023-1-12');
+insert into emp values(3, 'priti', null, 10, '2023-1-12');
+insert into emp values(4, null, null, 10, null);
+insert into emp values(null, null, null, 10, null);
+
+
+
+
+select * from emp;
+
+select ename , sal from emp;
+
+4565 		decimal(4)
+12345.66	decimal(7,2)
+656787.777	decimal(9,3)
+
+
+--to change the0as salary, hiredate as doj from emp;
+
+--to see the version
+select version();
+
+--to see the current date
+select curdate();
+or
+select current_date();
+
+--to see the date and time
+select now();
+
+--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
