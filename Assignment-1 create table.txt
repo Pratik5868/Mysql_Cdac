@@ -1,0 +1,85 @@
+ecommerce database
+1. create the customer table  with the given structure 
+
+email_address varchar(75) PRIMARY KEY
+first_name varchar(50)
+last_name varchar(50)
+address1 varchar(50)
+address2 varchar(50)
+customer_zip varchar(10)
+area_code char(3)
+telephone_number char(7)
+
+->create table customer_info(email_address varchar(75) PRIMARY KEY,first_name varchar(50),
+last_name varchar(50),address1 varchar(50),address2 varchar(50),customer_zip varchar(10),area_code char(3),telephone_number char(7));
+->mysql> insert into customer_info values('bobby1233@gmail.com','Bobby','Pandey','Central road',',Bombay','4000001','003','1235467');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into customer_info values('rajd@gmail.com','Raj','Deshmukh','Vidyut nagar',',Bhusawal','425001','043','1586857');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into customer_info values('vaishu232@gmail.com','Vaishali','Patil','Jalgaon tea point',',Sambhaji nagar','425006','096','325689');
+Query OK, 1 row affected (0.06 sec)
+
+insert 3 records 
+
+2. create the cardinfo table  with the given structure 
+
+card_id int PRIMARY KEY
+ccnum varchar(16)
+ccexp date
+name_on_card varchar(100)
+email_address varchar(75)
+-> mysql> create table cardinfo(card_id int PRIMARY KEY,ccnum varchar(16),ccexp date,name_on_card varchar(100),email_address varchar(75));
+Query OK, 0 rows affected (0.22 sec)
+
+-> mysql> insert into cardinfo values (1,'456782985','2023-03-24','Rajesh Shukla','raju@gmail.com');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into cardinfo values (2,'78964588','2023-01-13','Gajodhar Verma','gajodhar@gmail.com');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into cardinfo values (3,'84657952','2023-01-11','Joginder Singh','Joginder@gmail.com');
+Query OK, 1 row affected (0.02 sec)
+
+insert 3 records 
+
+
+3. create the cardtype table  with the given structure 
+card_id int  PRIMARY KEY
+PRIMARY KEY
+-> mysql> create table cardtype(card_id int PRIMARY KEY, card_name varchar(40));
+Query OK, 0 rows affected (0.34 sec)
+
+-> mysql> insert into cardtype values(001,"Visa card");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into cardtype values(002,"Debit card");
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into cardtype values(003,"Credit card");
+Query OK, 1 row affected (0.02 sec)
+insert 3 records 
+
+4.create the locale table  with the given structure 
+
+zip varchar(10) PRIMARY KEY
+city varchar(50)
+state char(2)
+
+-> mysql> create table local_area_info(zip varchar(10) PRIMARY KEY, city varchar(50),state char(2));
+Query OK, 0 rows affected (0.22 sec)
+
+mysql> insert into local_area_info values(425001,'Jalgaon','Mh');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into local_area_info values(500163,'Surat','Gj');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into local_area_info values(712568,'Jaipur','Rj');
+Query OK, 1 row affected (0.02 sec)
+
+
+insert 3 records 
+
+

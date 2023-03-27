@@ -1,0 +1,17 @@
+1. in a customer  table , update one of the record of your choice and change the address1 as boston 
+-> update customer_info  set address1='Boston' where first_name='Bobby';
+
+2. in a customer  table , update one of the record of your choice and change the customer_zip as 100 300
+-> update customer_info set customer_zip=100300 where first_name='Raj';
+
+3. delete the first record, give the proper condition in cardinfo 
+->  delete from cardinfo where card_id=1;
+
+4. truncate the table cardinfo 
+-> truncate table cardinfo;
+
+5. see the structure of cardinfo 
+-> desc cardinfo;
+
+6. drop the table cardtype .
+-> drop table cardtype;
