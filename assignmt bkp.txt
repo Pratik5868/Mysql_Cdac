@@ -1,0 +1,179 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 19
+Server version: 8.0.31 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| assignment         |
+| information_schema |
+| mysql              |
+| performance_schema |
+| practice           |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> use assignment;
+Database changed
+mysql> show tables assignment;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'assignment' at line 1
+mysql> show tables from assignment;
++----------------------+
+| Tables_in_assignment |
++----------------------+
+| customer             |
++----------------------+
+1 row in set (0.03 sec)
+
+mysql> drop table customer;
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> create table salesman_master(
+    -> salesman_no varchar(6) primary key check(salesman_no like 's%'),
+    -> salesman_name varchar(20) not null,
+    -> address1 varchar(30) not null,
+    -> address2 varchar(30),
+    -> city varchar(20),
+    -> pincode varchar(6),
+    -> state varchar(20),
+    -> sal_amt decimal(8,2) not null check(sal_amt>0),
+    -> tgt_to_get decimal(6,2) not null check(tgt_to_get>0),
+    -> ytd_sales decimal(6,2) not null,
+    -> remarks varchar(60));
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> insert into salesman_master values('s00001','Kiran','A/14','Worli',
+    -> 'Bombay','400002','mah',3000,100,50,'Good');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into salesman_master values('s00002','Manish','65','Nariman',
+    -> 'Bombay','400001','mah',3000,200,100,'Good');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into salesman_master values('s00003','Ravi','p-7','Bandra',
+    -> 'Bombay','400032','mah',3000,200,100,'Good');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into salesman_master values('s00004','Ashish','A/5','Juhu',
+    -> 'Bombay','400044','mah',3500,200,150,'Good');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from salesman_master;
++-------------+---------------+----------+----------+--------+---------+-------+---------+------------+-----------+---------+
+| salesman_no | salesman_name | address1 | address2 | city   | pincode | state | sal_amt | tgt_to_get | ytd_sales | remarks |
++-------------+---------------+----------+----------+--------+---------+-------+---------+------------+-----------+---------+
+| s00001      | Kiran         | A/14     | Worli    | Bombay | 400002  | mah   | 3000.00 |     100.00 |     50.00 | Good    |
+| s00002      | Manish        | 65       | Nariman  | Bombay | 400001  | mah   | 3000.00 |     200.00 |    100.00 | Good    |
+| s00003      | Ravi          | p-7      | Bandra   | Bombay | 400032  | mah   | 3000.00 |     200.00 |    100.00 | Good    |
+| s00004      | Ashish        | A/5      | Juhu     | Bombay | 400044  | mah   | 3500.00 |     200.00 |    150.00 | Good    |
++-------------+---------------+----------+----------+--------+---------+-------+---------+------------+-----------+---------+
+4 rows in set (0.00 sec)
+
+mysql> create table client master(
+    -> client_no varchar(6) primary key check(client_no like 'c%'),
+    -> client_name varchar(20) not null,
+    -> address1 varchar(30),
+    -> address2 varchar(30),
+    -> city varchar(15),
+    -> state varchar(15),
+    -> pincode numeric(6),
+    -> bal_due decimal(10,2));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'master(
+client_no varchar(6) primary key check(client_no like 'c%'),
+client_name' at line 1
+mysql> create table client_master(
+    -> client_no varchar(6) primary key check(client_no like 'c%'),
+    -> client_name varchar(20) not null,
+    -> address1 varchar(30),
+    -> address2 varchar(30),
+    -> city varchar(15),
+    -> state varchar(15),
+    -> pincode numeric(6),
+    -> bal_due decimal(10,2));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> insert into client_master values('c00001','Ivan Bayross','Cafe road',
+    -> null,'Bombay','Maharashtra',400054,15000);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into client_master values('c00002','Vandana Saitwal','Ghumat road',
+    -> null,'Madras','Tamil Nadu',780001,0);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into client_master values('c000023','Pramada Jaguste','Nariman point',
+    -> ^C
+mysql> insert into client_master values('c00003','Pramada Jaguste','Nariman point',
+    -> null,'Bombay','Maharashtra',400057,5000);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into client_master values('c00004','Basu Navindgi','Marine lines',
+    -> null,'Bombay','Maharashtra',400056,0);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into client_master values('c00005','Ravi Sreedharan','Rohini sector 7',
+    -> null,'Delhi','Delhi',100001,2000);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into client_master values('c00006','Rukmini','Krishna nagar',
+    -> null,'Bombay','Maharashtra',400050,0);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from client_master;
++-----------+-----------------+-----------------+----------+--------+-------------+---------+----------+
+| client_no | client_name     | address1        | address2 | city   | state       | pincode | bal_due  |
++-----------+-----------------+-----------------+----------+--------+-------------+---------+----------+
+| c00001    | Ivan Bayross    | Cafe road       | NULL     | Bombay | Maharashtra |  400054 | 15000.00 |
+| c00002    | Vandana Saitwal | Ghumat road     | NULL     | Madras | Tamil Nadu  |  780001 |     0.00 |
+| c00003    | Pramada Jaguste | Nariman point   | NULL     | Bombay | Maharashtra |  400057 |  5000.00 |
+| c00004    | Basu Navindgi   | Marine lines    | NULL     | Bombay | Maharashtra |  400056 |     0.00 |
+| c00005    | Ravi Sreedharan | Rohini sector 7 | NULL     | Delhi  | Delhi       |  100001 |  2000.00 |
+| c00006    | Rukmini         | Krishna nagar   | NULL     | Bombay | Maharashtra |  400050 |     0.00 |
++-----------+-----------------+-----------------+----------+--------+-------------+---------+----------+
+6 rows in set (0.00 sec)
+
+mysql> create table sales_order(
+    -> s_order_no varchar(6) primary key check(s_order_no like 'o%',
+    -> s_order_date datetime,
+    -> client_no varchar(6) foreign key(client_no) references client_master_table(client_no) on delete cascade,
+    -> dely_addr varchar(25),
+    -> salesman_no varchar(6) foreign key(salesman_no) references salesman_master_table(salesman_no) on delete cascade,
+    -> dely_type char(1) default'F' check( dely_type in('P','F')),
+    -> billed_type char(1) default'N' check(billed_type in('Y','N')),
+    -> dely_date date,
+    -> order_status varchar(10) check in('in process','fulfilled','backorder','canceled',
+    -> check(dely_date >= s_order_date));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+s_order_date datetime,
+client_no varchar(6) foreign key(client_no) references ' at line 2
+mysql> create table sales_order(
+    -> s_order_no varchar(6) primary key check(s_order_no like 'o%'),
+    -> s_order_date datetime,
+    -> client_no varchar(6) foreign key(client_no) references client_master_table(client_no) on delete cascade,
+    -> dely_date date,
+    -> ^C
+mysql> create table sales_order(
+    ->  s_order_no varchar(6) primary key check(s_order_no like 'o%'),
+    ->  s_order_date datetime,
+    -> client_no varchar(6) foreign key(client_no) references client_master_table(client_no) on delete cascade,
+    -> dely_addr varchar(25),
+    -> salesman_no varchar(6) foreign key(salesman_no) references salesman_master_table(salesman_no) on delete cascade,
+    -> dely_type char(1) default'F' check( dely_type in('P','F')),
+    -> billed_type char(1) default'N' check(billed_type in('Y','N')),
+    -> dely_date date,
+    ->  order_status varchar(10) check in('in process','fulfilled','backorder','canceled',
+    -> check(dely_date >= s_order_date));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'foreign key(client_no) references client_master_table(client_no) on delete casca' at line 4
+mysql>
